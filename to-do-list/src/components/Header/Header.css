@@ -1,6 +1,25 @@
+.heared-container {
+    width: 39%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    align-content: center;
+    margin-top: 200px;
+    font-family: 'Josefin Sans';
+
+}
+
+
 .todo-title {
     text-align: center;
-    font-size: 30px;
+    font-size: 25px;
     color: rgb(249, 246, 247);
-    margin-top: 100px;
+    letter-spacing: 20px;
+    font-weight: 800;
+}
+
+.pen-icon {
+    color: white;
+    font-size: 25px;
 }

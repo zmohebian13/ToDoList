@@ -1,0 +1,20 @@
+.todo-input {
+    margin: 30px auto;
+    width: 40%;
+    
+}
+
+.input-value {
+    font-family: 'Josefin Sans';
+    font-weight: bolder;
+    padding: 15px;
+    outline: none;
+}
+.input-value:focus {
+    box-shadow: none;
+    outline: none;
+}
+
+#button-addon2 {
+    color: aliceblue;
+}
