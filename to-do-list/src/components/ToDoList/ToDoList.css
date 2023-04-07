@@ -1,4 +1,4 @@
-.todo-input {
+.todolist-input {
     margin: 30px auto;
     width: 40%;
     
@@ -8,13 +8,27 @@
     font-family: 'Josefin Sans';
     font-weight: bolder;
     padding: 15px;
-    outline: none;
+    border: #ffffff;
 }
+
 .input-value:focus {
     box-shadow: none;
     outline: none;
+    border: #ffffff;
 }
 
 #button-addon2 {
-    color: aliceblue;
+    color: rgb(0, 0, 0);
+    border: none;
+    background-color: #ffffff;
+}
+
+.plus-icon {
+    font-size: 20px;
+    padding-right: 5px;
+    transition: all 200ms;
+}
+
+.plus-icon:hover {
+    transform: scale(1.4);
 }
