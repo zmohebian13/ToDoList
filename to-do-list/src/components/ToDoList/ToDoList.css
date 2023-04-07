@@ -41,3 +41,6 @@ input:focus {
     background-color: transparent;
 }
 
+.todo-list {
+    padding-left: 0;
+}

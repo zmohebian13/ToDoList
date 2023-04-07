@@ -1,63 +1,64 @@
-import React, { useState } from 'react'
-import { Container, Row } from 'react-bootstrap'
-import Header from '../Header/Header'
-import ToDo from '../ToDo/ToDo'
-import './ToDoList.css'
+import React, { useState } from "react";
+import { Container, Row } from "react-bootstrap";
+import Header from "../Header/Header";
+import ToDo from "../ToDo/ToDo";
+import "./ToDoList.css";
 
 export default function ToDoList() {
-  
-  const [todoTitle, setTodoTitle] = useState('')
-  const [todos, setTodos] = useState([])
+  const [todoTitle, setTodoTitle] = useState("");
+  const [todos, setTodos] = useState([]);
 
   const todoTitleHandler = (event) => {
-    setTodoTitle(event.target.value)
-  }
+    setTodoTitle(event.target.value);
+  };
 
   const addTodo = (event) => {
-    event.preventDefault()
+    event.preventDefault();
 
     let newTodoObject = {
-      id : todos.length + 1,
-      title : todoTitle,
-      completed : false
-    }
+      id: todos.length + 1,
+      title: todoTitle,
+      completed: false,
+    };
 
-     setTodos((prevState) => {
-       return [...prevState, newTodoObject];
-     });
+    setTodos((prevState) => {
+      return [...prevState, newTodoObject];
+    });
 
-     setTodoTitle('')
+    setTodoTitle("");
+  };
+
+  const removeTodo = (todoId) => {
+    let newTodos = todos.filter(todo => {
+      return todo !== todoId
+    })
+    
+    console.log(newTodos);
   }
-
 
   return (
     <div>
       <Header />
-      <Container>
-        <Row>
-          <div className="todolist-container">
-            <form className="todolist-items" onSubmit={addTodo}>
-              <input
-                type="text"
-                placeholder="Create a new ToDo ..."
-                className="input-todo"
-                onChange={todoTitleHandler}
-                value={todoTitle}
-              />
-              <div className="add-button">
-                <button className="plus-btn" type="submit">
-                  +
-                </button>
-              </div>
-            </form>
+      <div className="todolist-container">
+        <form className="todolist-items" onSubmit={addTodo}>
+          <input
+            type="text"
+            placeholder="Create a new ToDo ..."
+            className="input-todo"
+            onChange={todoTitleHandler}
+            value={todoTitle}
+          />
+          <div className="add-button">
+            <button className="plus-btn" type="submit">
+              +
+            </button>
           </div>
-        </Row>
-      </Container>
-
+        </form>
+      </div>
       <ul className="todo-list">
-        {todos.map((todo) => {
-          <ToDo key={todo.id} {...todo} />;
-        })}
+        {todos.map((todo) => (
+          <ToDo key={todo.id} {...todo} onRemove={removeTodo} />
+        ))}
       </ul>
     </div>
   );
