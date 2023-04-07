@@ -1,32 +1,64 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Container, Row } from 'react-bootstrap'
-import InputGroup from 'react-bootstrap/InputGroup'
-import Form from 'react-bootstrap/Form'
-import Button from 'react-bootstrap/Button'
 import Header from '../Header/Header'
 import ToDo from '../ToDo/ToDo'
 import './ToDoList.css'
 
 export default function ToDoList() {
+  
+  const [todoTitle, setTodoTitle] = useState('')
+  const [todos, setTodos] = useState([])
+
+  const todoTitleHandler = (event) => {
+    setTodoTitle(event.target.value)
+  }
+
+  const addTodo = (event) => {
+    event.preventDefault()
+
+    let newTodoObject = {
+      id : todos.length + 1,
+      title : todoTitle,
+      completed : false
+    }
+
+     setTodos((prevState) => {
+       return [...prevState, newTodoObject];
+     });
+
+     setTodoTitle('')
+  }
+
+
   return (
     <div>
       <Header />
       <Container>
         <Row>
-          <div className="left-side">
-            <InputGroup className="todolist-input">
-              <Form.Control
-                placeholder="Create a new todo ..."
-                className="input-value"
+          <div className="todolist-container">
+            <form className="todolist-items" onSubmit={addTodo}>
+              <input
+                type="text"
+                placeholder="Create a new ToDo ..."
+                className="input-todo"
+                onChange={todoTitleHandler}
+                value={todoTitle}
               />
-              <Button variant="outline-secondary" id="button-addon2">
-                <div className='plus-icon'>+</div> 
-              </Button>
-            </InputGroup>
+              <div className="add-button">
+                <button className="plus-btn" type="submit">
+                  +
+                </button>
+              </div>
+            </form>
           </div>
         </Row>
       </Container>
-      <ToDo />
+
+      <ul className="todo-list">
+        {todos.map((todo) => {
+          <ToDo key={todo.id} {...todo} />;
+        })}
+      </ul>
     </div>
   );
 }

@@ -1,34 +1,43 @@
-.todolist-input {
-    margin: 30px auto;
+.todolist-container {
+    width: 100%;
+}
+
+.todolist-items {
+    display: flex;
+    background-color: aliceblue;
+    justify-content: space-between;
+    align-items: center;
+    align-content: center;
     width: 40%;
-    
+    margin: 30px auto;
+    border-radius: 5px;
+    height: 60px;
+    padding: 0 10px;
 }
 
-.input-value {
-    font-family: 'Josefin Sans';
-    font-weight: bolder;
-    padding: 15px;
-    border: #ffffff;
-}
-
-.input-value:focus {
-    box-shadow: none;
-    outline: none;
-    border: #ffffff;
-}
-
-#button-addon2 {
-    color: rgb(0, 0, 0);
+input {
     border: none;
-    background-color: #ffffff;
+    background-color: transparent;
+    font-family: 'Josefin Sans';
+    font-weight: 800;
+    font-size: 18px;
 }
 
-.plus-icon {
-    font-size: 20px;
-    padding-right: 5px;
+input:focus {
+    outline: none;
+}
+
+.plus-btn {
+    background-color: aliceblue;
+    border: none;
+    margin: 0 auto;
     transition: all 200ms;
+    font-size: 20px;
 }
 
-.plus-icon:hover {
+
+.plus-btn:hover {
     transform: scale(1.4);
+    background-color: transparent;
 }
+
