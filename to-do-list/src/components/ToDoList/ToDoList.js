@@ -29,12 +29,25 @@ export default function ToDoList() {
   };
 
   const removeTodo = (todoId) => {
-    let newTodos = todos.filter(todo => {
-      return todo !== todoId
-    })
-    
-    console.log(newTodos);
-  }
+    let newTodos = todos.filter((todo) => {
+      return todo.id !== todoId;
+    });
+
+    setTodos(newTodos);
+  };
+
+  const editTodo = (todoId) => {
+    console.log(todoId);
+
+    let newTodos = [...todos];
+    newTodos.forEach((todo) => {
+      if (todo.id === todoId) {
+        todo.completed = !todo.completed;
+      }
+    });
+
+    setTodos(newTodos);
+  };
 
   return (
     <div>
@@ -57,9 +70,20 @@ export default function ToDoList() {
       </div>
       <ul className="todo-list">
         {todos.map((todo) => (
-          <ToDo key={todo.id} {...todo} onRemove={removeTodo} />
+          <ToDo
+            key={todo.id}
+            {...todo}
+            onRemove={removeTodo}
+            onEdit={editTodo}
+          />
         ))}
       </ul>
+
+      <div className="select-box">
+        <h5 className="select-item">All</h5>
+        <h5 className="select-item">Completed</h5>
+        <h5 className="select-item">Uncompleted</h5>
+      </div>
     </div>
   );
 }

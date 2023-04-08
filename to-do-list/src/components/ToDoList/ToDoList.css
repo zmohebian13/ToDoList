@@ -44,3 +44,31 @@ input:focus {
 .todo-list {
     padding-left: 0;
 }
+
+.select-box {
+    width: 40%;
+    background-color: rgb(255, 255, 255);
+    border-radius: 5px;
+    margin: 0 auto;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+}
+
+.select-item {
+    font-size: 13px;
+    padding: 0 10px;
+    margin-bottom: 0;
+    font-family: 'Josefin Sans';
+    font-weight: 800;
+    color: rgb(143, 143, 143);
+}
+
+.select-item:hover {
+    color: rgb(0, 0, 0);
+    font-weight: 800;
+    cursor: pointer;
+
+}
