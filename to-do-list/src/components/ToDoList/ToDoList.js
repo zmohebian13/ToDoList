@@ -7,6 +7,7 @@ import "./ToDoList.css";
 export default function ToDoList() {
   const [todoTitle, setTodoTitle] = useState("");
   const [todos, setTodos] = useState([]);
+  const [status, setStatus] = useState("all");
 
   const todoTitleHandler = (event) => {
     setTodoTitle(event.target.value);
@@ -49,6 +50,10 @@ export default function ToDoList() {
     setTodos(newTodos);
   };
 
+  const statusHandler = (event) => {
+    setStatus(event.target.value);
+  };
+
   return (
     <div>
       <Header />
@@ -69,20 +74,47 @@ export default function ToDoList() {
         </form>
       </div>
       <ul className="todo-list">
-        {todos.map((todo) => (
-          <ToDo
-            key={todo.id}
-            {...todo}
-            onRemove={removeTodo}
-            onEdit={editTodo}
-          />
-        ))}
+        {status === "completed" &&
+          todos
+            .filter((todo) => todo.completed === true)
+            .map((todo) => (
+              <ToDo
+                key={todo.id}
+                {...todo}
+                onRemove={removeTodo}
+                onEdit={editTodo}
+              />
+            ))}
+
+        {status === "uncompleted" &&
+          todos
+            .filter((todo) => !todo.completed)
+            .map((todo) => (
+              <ToDo
+                key={todo.id}
+                {...todo}
+                onRemove={removeTodo}
+                onEdit={editTodo}
+              />
+            ))}
+
+        {status === "all" &&
+          todos.map((todo) => (
+            <ToDo
+              key={todo.id}
+              {...todo}
+              onRemove={removeTodo}
+              onEdit={editTodo}
+            />
+          ))}
       </ul>
 
       <div className="select-box">
-        <h5 className="select-item">All</h5>
-        <h5 className="select-item">Completed</h5>
-        <h5 className="select-item">Uncompleted</h5>
+        <select name="" id="" className="filter-todo" onChange={statusHandler}>
+          <option value="all">All</option>
+          <option value="completed">Completed</option>
+          <option value="uncompleted">Uncompleted</option>
+        </select>
       </div>
     </div>
   );

@@ -55,20 +55,16 @@ input:focus {
     justify-content: center;
     align-items: center;
     align-content: center;
-}
-
-.select-item {
-    font-size: 13px;
     padding: 0 10px;
-    margin-bottom: 0;
     font-family: 'Josefin Sans';
-    font-weight: 800;
-    color: rgb(143, 143, 143);
 }
 
-.select-item:hover {
-    color: rgb(0, 0, 0);
-    font-weight: 800;
-    cursor: pointer;
+.filter-todo {
+    border: none;
+    width: 100%;
+    font-weight: 700;
+}
 
+.filter-todo:focus {
+    outline: none;
 }
